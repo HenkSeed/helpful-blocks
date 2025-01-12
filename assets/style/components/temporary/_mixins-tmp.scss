@@ -1,0 +1,23 @@
+/* Миксин плавно меняет параметр $property-name в диапазоне от $max-value до $min-value при изменении ширины экрана от $screen-max-width до $screen-min-width */
+@mixin responsive($property-name, $max-value: 16, $min-value: 12, $screen-max-width: 1200, $screen-min-width: 768) {
+    #{$property-name}: calc(#{$min-value}px + (#{$max-value} - #{$min-value}) * ((100vw - (#{$screen-min-width}px)) / ($screen-max-width - $screen-min-width)));
+}
+
+/* Миксин  */
+@mixin responsive-med($property-name,
+    $max-value: 16, $min-value: 12, $screen-max-width: 1200, $screen-min-width: 768) {
+    /* Устанавливаем свойство при экране больше $screen-max-width */
+    #{$property-name}: #{$max-value}px;
+
+    @media(max-width: #{$screen-max-width}px) {
+
+        /* Устанавливаем свойство динамически в диапазоне от $screen-max-width до $screen-min-width */
+        @include responsive($property-name,
+            $max-value, $min-value, $screen-max-width, $screen-min-width);
+    }
+
+    @media(max-width: #{$screen-min-width}px) {
+        /* Устанавливаем свойство при экране меньше $screen-min-width */
+        #{$property-name}: #{$min-value}px;
+    }
+}

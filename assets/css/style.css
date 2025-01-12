@@ -1,0 +1,103 @@
+@charset "UTF-8";
+/* Миксин плавно меняет параметр $property-name в диапазоне от $max-value до $min-value при изменении ширины экрана от $screen-max-width до $screen-min-width */
+/* Миксин  */
+.home-link {
+  padding-top: 50px;
+  border-bottom: 1px solid black;
+}
+.home-link a {
+  color: magenta;
+  font-size: 20px;
+  text-decoration: none;
+  font-weight: 700;
+}
+.home-link a:hover {
+  opacity: 0.64;
+}
+
+body {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+input {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: none;
+  outline: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+}
+
+:root {
+  --color-grey-bg: #F7FAFB;
+  --color-grey-card-bg: #3d4255;
+  --color-grey-lbl: #171A26;
+  --color-grey-phold: rgba(23, 26, 38, 0.64);
+  --color-grey-txt: #939AAA;
+  --color-black-btn-txt: #2c3246;
+  --color-black-btn-bg: #73ffab;
+  --color-white-text-0: #fff;
+  --color-white-text: #eff2f4;
+  --color-green-bg: #2AC77B;
+  --gap-cards: 24px;
+}
+
+.mixins-test__content h1 {
+  /* Устанавливаем свойство при экране больше $screen-max-width */
+  font-size: 54px;
+}
+@media (max-width: 1200px) {
+  .mixins-test__content h1 {
+    /* Устанавливаем свойство динамически в диапазоне от $screen-max-width до $screen-min-width */
+    font-size: calc(32px + (54 - 32) * (100vw - (360px)) / 840);
+  }
+}
+@media (max-width: 360px) {
+  .mixins-test__content h1 {
+    /* Устанавливаем свойство при экране меньше $screen-min-width */
+    font-size: 32px;
+  }
+}
+
+.section {
+  /* Устанавливаем свойство при экране больше $screen-max-width */
+  padding-left: 64px;
+  /* Устанавливаем свойство при экране больше $screen-max-width */
+  padding-right: 64px;
+}
+@media (max-width: 1200px) {
+  .section {
+    /* Устанавливаем свойство динамически в диапазоне от $screen-max-width до $screen-min-width */
+    padding-left: calc(20px + (64 - 20) * (100vw - (360px)) / 840);
+  }
+}
+@media (max-width: 360px) {
+  .section {
+    /* Устанавливаем свойство при экране меньше $screen-min-width */
+    padding-left: 20px;
+  }
+}
+@media (max-width: 1200px) {
+  .section {
+    /* Устанавливаем свойство динамически в диапазоне от $screen-max-width до $screen-min-width */
+    padding-right: calc(20px + (64 - 20) * (100vw - (360px)) / 840);
+  }
+}
+@media (max-width: 360px) {
+  .section {
+    /* Устанавливаем свойство при экране меньше $screen-min-width */
+    padding-right: 20px;
+  }
+}/*# sourceMappingURL=style.css.map */
